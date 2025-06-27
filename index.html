@@ -264,27 +264,21 @@
         }
 
         .project-screenshots {
-            /* display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin: 20px 0;
-            max-height: 200px;
-            overflow: hidden;
-            justify-items: center; */
-
             display: flex;
             align-items: flex-start;
             justify-content: flex-start;
-            flex-wrap: wrap;
             gap: 8px;
             margin: 20px 0;
             max-height: 200px;
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #667eea #e0e6ff;
         }
 
         .project-screenshots img {
-            width: 100%;
-            height: 120px;
+            width: 190px;
+            height: 140px;
             object-fit: cover;
             border-radius: 10px;
             border: 2px solid #e0e6ff;
@@ -299,7 +293,7 @@
         }
 
         .project-screenshots img.vertical-screenshot {
-            width: 70px;
+            width: 60px;
             height: 120px;
             object-fit: cover;
             border-radius: 10px;
@@ -371,13 +365,6 @@
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
         }
 
-        .experience-item .project-screenshots {
-            justify-items: center;
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }       
 
         .experience-icon {
             width: 60px;
@@ -775,10 +762,6 @@
                         <p class="experience-date">June 2024 - May 2025 | Montevideo, Uruguay</p>
                         <p>Designed and implemented integrated database systems with AirTable, built full-stack web applications, and created comprehensive technical documentation. Developed automated workflows that improved organizational efficiency and data management. Assisted with photography and videography. Redesigned pages on their website to improve organization and clarity.</p>
                     </div>
-                    <div class="project-screenshots">
-                        <img src="images/projects/jpc-pic.jpg" alt="Juventud para Cristo 1" onclick="openModal(this)">
-                        <img src="images/projects/jpc-pic-2.jpg" alt="Juventud para Cristo 1" onclick="openModal(this)">
-                    </div>
                 </div>
 
                 <div class="experience-item">
@@ -791,9 +774,6 @@
                         <p class="experience-date">August 2023 - May 2024 | Wheaton, IL</p>
                         <p>Helped lead a cross-functional team of 11 in producing a 13-track studio album. Created a project schedule to manage writing and recording sessions. Distributed the album to major platforms such as Spotify and Apple Music. Designed promotional content.</p>
                     </div>
-                    <div class="project-screenshots">
-                        <img src="images/projects/stp-pic.jpg" alt="Storytelling Project 1" onclick="openModal(this)">
-                    </div>
                 </div>
 
                 <div class="experience-item">
@@ -805,9 +785,6 @@
                         <p class="experience-company">Wheaton College Admissions Office</p>
                         <p class="experience-date">August 2022 - May 2023 | Wheaton, IL</p>
                         <p>Represented Wheaton College and welcomed prospective students, families, and faculty by leading 75-minute walking tours of the campus and hosting students overnight to familiarize them with residence life. to prospective students and faculty. Developed strong communication and public speaking skills while enjoying a tight-knit team dynamic.</p>
-                    </div>
-                    <div class="project-screenshots">
-                        <img src="images/projects/deke-pic.jpg" alt="Wheaton College Deke 1" onclick="openModal(this)">
                     </div>
                 </div>
             </div>
