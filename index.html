@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan Lee - Software Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: 0 auto 20px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #667eea;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border: 2px solid white;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .contact-links a:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            background: white;
+            margin: 40px 0;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(145deg, #f8f9ff, #e8ecff);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, #ffffff, #f5f7ff);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #e0e6ff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: #e8ecff;
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-links a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .project-links a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .experience-timeline {
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .experience-item {
+            background: linear-gradient(145deg, #ffffff, #f5f7ff);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .experience-item h3 {
+            color: #667eea;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            color: #888;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .experience-date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+            background: rgba(0,0,0,0.1);
+            margin-top: 60px;
+            border-radius: 20px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+            
+            .contact-links {
+                gap: 15px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-img">JL</div>
+            <h1>Jordan Lee</h1>
+            <p class="subtitle">Software Developer & Computer Science Student</p>
+            <div class="contact-links">
+                <a href="mailto:jordanjlee@icloud.com">Email</a>
+                <a href="https://www.linkedin.com/in/jordan-joonsu-lee" target="_blank">LinkedIn</a>
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="tel:703.220.4131">Phone</a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a Computer Science student at Wheaton College with a passion for building scalable applications and solving complex problems. With experience in full-stack development, mobile applications, and distributed systems, I love creating technology that makes a meaningful impact.</p>
+                <br>
+                <p>Currently pursuing my B.S. in Computer Science (GPA: 3.95), I've had the opportunity to work internationally in Uruguay, developing tech solutions for NGOs while gaining valuable cross-cultural experience.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Swift</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Development Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">XCode</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Netlify</span>
+                        <span class="skill-tag">WordPress</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>HALT Helper</h3>
+                    <p class="project-date">January 2024 - May 2024</p>
+                    <p>A mental health iOS app built with Swift that helps users track emotional wellness states using MVC architecture. Features an intuitive UI for recording coping strategies and monitoring mental health patterns.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Swift</span>
+                        <span class="tech-tag">XCode</span>
+                        <span class="tech-tag">MVC Architecture</span>
+                        <span class="tech-tag">iOS Development</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">GitHub</a>
+                        <a href="#">Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Wheaton Beacon</h3>
+                    <p class="project-date">January 2023 - May 2023</p>
+                    <p>A location-based social connection app for campus communities. Built collaboratively using Agile methodology with Firebase backend and Google Maps API integration for real-time geolocation features.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Android Studio</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Google Maps API</span>
+                        <span class="tech-tag">Agile</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">GitHub</a>
+                        <a href="#">Live Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Studia</h3>
+                    <p class="project-date">August 2020 - June 2021</p>
+                    <p>An Android study group app featuring real-time chat, user authentication, and cloud storage. Designed with a focus on scalable architecture and consistent UI/UX for educational collaboration.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Real-time Database</span>
+                        <span class="tech-tag">Cloud Storage</span>
+                        <span class="tech-tag">XML</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">GitHub</a>
+                        <a href="#">Case Study</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>NGO Location Tracker</h3>
+                    <p class="project-date">June 2024 - May 2025</p>
+                    <p>A JavaScript web application integrating AirTable REST API with Google Maps API for real-time geolocation of church partners. Built for Juventud para Cristo Uruguay with secure deployment and comprehensive documentation.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">AirTable API</span>
+                        <span class="tech-tag">Google Maps API</span>
+                        <span class="tech-tag">Netlify</span>
+                        <span class="tech-tag">REST APIs</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">GitHub</a>
+                        <a href="#">Live Site</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>Communications and Tech Intern</h3>
+                    <p class="experience-company">Juventud para Cristo Uruguay</p>
+                    <p class="experience-date">June 2024 - May 2025 | Montevideo, Uruguay</p>
+                    <p>Designed and implemented integrated database systems with AirTable, built full-stack web applications, and created comprehensive technical documentation. Developed automated workflows that improved organizational efficiency and data management.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Album Executive Producer</h3>
+                    <p class="experience-company">Wheaton College Storytelling Project</p>
+                    <p class="experience-date">August 2023 - May 2024 | Wheaton, IL</p>
+                    <p>Led cross-functional team of 11 in producing 13-track album. Designed and maintained project website with cohesive frontend architecture, featured on official college website. Managed complex workflows for creative content production.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Campus Representative</h3>
+                    <p class="experience-company">Wheaton College Admissions Office</p>
+                    <p class="experience-date">August 2022 - May 2023 | Wheaton, IL</p>
+                    <p>Facilitated structured presentations to prospective students and faculty, developing strong communication and public speaking skills while representing the institution's technical programs.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Jordan Lee. Ready to build something amazing together.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
