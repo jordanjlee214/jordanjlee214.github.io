@@ -45,6 +45,25 @@
             font-size: 48px;
             color: #667eea;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-img .initials {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: #667eea;
+            font-weight: bold;
         }
 
         h1 {
@@ -164,7 +183,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
@@ -194,6 +213,38 @@
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
         }
 
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .project-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .project-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .project-title-section {
+            flex: 1;
+        }
+
         .project-card h3 {
             color: #667eea;
             font-size: 1.5rem;
@@ -210,6 +261,32 @@
             color: #666;
             margin-bottom: 20px;
             line-height: 1.6;
+        }
+
+        .project-screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+            max-height: 200px;
+            overflow: hidden;
+            justify-items: center;
+        }
+
+        .project-screenshots img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #e0e6ff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-screenshots img:hover {
+            transform: scale(1.05);
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
 
         .project-tech {
@@ -231,6 +308,7 @@
         .project-links {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .project-links a {
@@ -261,11 +339,39 @@
             border-radius: 15px;
             border-left: 4px solid #667eea;
             transition: all 0.3s ease;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
         }
 
         .experience-item:hover {
             transform: translateX(10px);
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .experience-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .experience-content {
+            flex: 1;
         }
 
         .experience-item h3 {
@@ -286,6 +392,49 @@
             margin-bottom: 15px;
         }
 
+
+        /* Modal for image viewing */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            color: #667eea;
+        }
+
         footer {
             text-align: center;
             padding: 40px 0;
@@ -304,6 +453,11 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @media (max-width: 768px) {
@@ -327,19 +481,36 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .project-screenshots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .experience-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .experience-icon {
+                align-self: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="profile-img">JL</div>
+            <div class="profile-img">
+                <!-- Replace with your profile image -->
+                <img src="images/profile.jpg" alt="Jordan Lee" onerror="this.style.display='none'; this.parentElement.querySelector('.initials').style.display='block';">
+                <span class="initials" style="display: none;">JL</span>
+            </div>
             <h1>Jordan Lee</h1>
             <p class="subtitle">Software Developer & Computer Science Student</p>
             <div class="contact-links">
                 <a href="mailto:jordanjlee@icloud.com">Email</a>
                 <a href="https://www.linkedin.com/in/jordan-joonsu-lee" target="_blank">LinkedIn</a>
-                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="https://github.com/jordanjlee214" target="_blank">GitHub</a>
                 <a href="tel:703.220.4131">Phone</a>
             </div>
         </header>
@@ -347,9 +518,11 @@
         <section class="section">
             <h2>About Me</h2>
             <div class="about-content">
-                <p>I'm a Computer Science student at Wheaton College with a passion for building scalable applications and solving complex problems. With experience in full-stack development, mobile applications, and distributed systems, I love creating technology that makes a meaningful impact.</p>
+                <p>🎓</p>
+                <p>Wheaton College '25' | B.S. Computer Science</p>
+                <p>Thomas Jefferson High School for Science and Technology '21</p>
                 <br>
-                <p>Currently pursuing my B.S. in Computer Science (GPA: 3.95), I've had the opportunity to work internationally in Uruguay, developing tech solutions for NGOs while gaining valuable cross-cultural experience.</p>
+                <p>Creative communicator and collaborative developer passionate about designing tools that matter. With experience in full-stack development, mobile applications, and distributed systems, I love creating technology that serves people.</p>
             </div>
         </section>
 
@@ -381,10 +554,11 @@
                     <h3>Web Technologies</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">React</span>
                         <span class="skill-tag">Node.js</span>
                         <span class="skill-tag">Netlify</span>
+                        <span class="skill-tag">AirTable</span>
                         <span class="skill-tag">WordPress</span>
+                        <span class="skill-tag">Wix</span>
                     </div>
                 </div>
             </div>
@@ -393,10 +567,89 @@
         <section class="section">
             <h2>Featured Projects</h2>
             <div class="projects-grid">
+
                 <div class="project-card">
-                    <h3>HALT Helper</h3>
-                    <p class="project-date">January 2024 - May 2024</p>
-                    <p>A mental health iOS app built with Swift that helps users track emotional wellness states using MVC architecture. Features an intuitive UI for recording coping strategies and monitoring mental health patterns.</p>
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="images/projects/church-map-icon.png" alt="Church Map" onerror="this.style.display='none'; this.parentElement.innerHTML='🗺️';">
+                        </div>
+                        <div class="project-title-section">
+                            <h3>Live Church Map System</h3>
+                            <p class="project-date">June 2024 - May 2025</p>
+                        </div>
+                    </div>
+                    <p><strong>Built for:</strong> <a href="https://juventudparacristo.org.uy" target="_blank">Juventud para Cristo Uruguay</a> and <a href="https://www.wheaton.edu/academics/academic-centers/human-needs-and-global-resources-hngr/" target="_blank">Wheaton College HNGR</a></p>
+                    <p>A JavaScript web application integrating AirTable REST API with Google Maps API for real-time geolocation of local church partners that are connected to Juventud para Cristo, a youth development NGO in Montevideo, Uruguay. Built with secure deployment on Netlify and comprehensive documentation.</p>
+                    
+                    <div class="project-screenshots">
+                        <img src="images/projects/church-map-1.png" alt="Church Map Screenshot 1" onclick="openModal(this)">
+                        <img src="images/projects/church-map-2.png" alt="Church Map Screenshot 2" onclick="openModal(this)">
+                        <img src="images/projects/church-map-3.png" alt="Church Map Screenshot 3" onclick="openModal(this)">
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">AirTable</span>
+                        <span class="tech-tag">Google Maps API</span>
+                        <span class="tech-tag">Netlify</span>
+                        <span class="tech-tag">REST APIs</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://jpc-mapa-iglesias.netlify.app">Live Site</a>
+                        <a href="https://docs.google.com/presentation/d/1gH17hxdGhgeYq_-AT4lXiqIJezuX-kbvsp3Y48jJPWU/edit?usp=sharing">Use Cases</a>
+                        <a href="https://docs.google.com/document/d/1M00-r4GROx2-aPxJ4YTMku_QSfNfgMKR0UdgAwaWC0M/edit?usp=sharing">Research Paper</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="images/projects/storytelling-icon.png" alt="Storytelling Project" onerror="this.style.display='none'; this.parentElement.innerHTML='✏️';">
+                        </div>
+                        <div class="project-title-section">
+                            <h3>Storytelling Project Website</h3>
+                            <p class="project-date">December 2023 - April 2025</p>
+                        </div>
+                    </div>
+                    <p><strong>Built for:</strong> <a href="https://www.wheaton.edu/life-at-wheaton/intercultural-arts-and-media/" target="_blank">Wheaton College</a></p>
+                    <p>Designed a website to archive and showcase multi-media artwork created by Storytelling Project, an artistic student organization at Wheaton College. Featured on the official Wheaton College website.</p>
+                    
+                    <div class="project-screenshots">
+                        <img src="images/projects/storytelling-1.png" alt="Storytelling Website Screenshot 1" onclick="openModal(this)">
+                        <img src="images/projects/storytelling-2.png" alt="Storytelling Website Screenshot 2" onclick="openModal(this)">
+                        <img src="images/projects/storytelling-3.png" alt="Storytelling Website Screenshot 3" onclick="openModal(this)">
+                    </div>
+
+                    <div class="project-tech">
+                        <span class="tech-tag">Wix</span>
+                        <span class="tech-tag">Frontend Design</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://storytellingprojectwc.com">Live Site</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="images/projects/halt-helper-icon.png" alt="HALT Helper" onerror="this.style.display='none'; this.parentElement.innerHTML='🤝';">
+                        </div>
+                        <div class="project-title-section">
+                            <h3>HALT Helper</h3>
+                            <p class="project-date">January 2024 - May 2024</p>
+                        </div>
+                    </div>
+                    <p><strong>Built for:</strong> CSCI 373: Platform-Specific Development</p>
+                    <p>A mental health iOS app built with Swift that helps users track emotional wellness states. Implemented with MVC architecture. Features a simple, intuitive UI for recording coping strategies and making them quickly available.</p>
+                    
+                    <div class="project-screenshots">
+                        <img src="images/projects/halt-1.png" alt="HALT Helper Screenshot 1" onclick="openModal(this)">
+                        <img src="images/projects/halt-2.png" alt="HALT Helper Screenshot 2" onclick="openModal(this)">
+                        <img src="images/projects/halt-3.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/halt-4.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/halt-5.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)">
+                    </div>
+
                     <div class="project-tech">
                         <span class="tech-tag">Swift</span>
                         <span class="tech-tag">XCode</span>
@@ -404,59 +657,76 @@
                         <span class="tech-tag">iOS Development</span>
                     </div>
                     <div class="project-links">
-                        <a href="#">GitHub</a>
-                        <a href="#">Demo</a>
+                        <a href="https://drive.google.com/file/d/1xEk4Dit1B8DM_yuQqd_wYRrVBnmn2Umr/view?usp=sharing">Demo Video</a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>Wheaton Beacon</h3>
-                    <p class="project-date">January 2023 - May 2023</p>
-                    <p>A location-based social connection app for campus communities. Built collaboratively using Agile methodology with Firebase backend and Google Maps API integration for real-time geolocation features.</p>
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="images/projects/beacon-icon.png" alt="Wheaton Beacon" onerror="this.style.display='none'; this.parentElement.innerHTML='📍';">
+                        </div>
+                        <div class="project-title-section">
+                            <h3>Wheaton Beacon: A Campus Connection App</h3>
+                            <p class="project-date">January 2023 - May 2023</p>
+                        </div>
+                    </div>
+                    <p><strong>Built for:</strong> CSCI 335: Software Development</p>
+                    <p>A location-based social connection app for campus communities. Enables students to share each others locations and receive notifications for both planned and spontaneous meetups. Built collaboratively using Agile methodology with Firebase backend and Google Maps API integration for real-time geolocation features.</p>
+                    
+                    <div class="project-screenshots">
+                        <img src="images/projects/beacon-1.png" alt="Beacon Screenshot 1" onclick="openModal(this)">
+                        <img src="images/projects/beacon-2.png" alt="Beacon Screenshot 2" onclick="openModal(this)">
+                        <img src="images/projects/beacon-3.png" alt="Beacon Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/beacon-4.png" alt="Beacon Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/beacon-5.png" alt="Beacon Screenshot 3" onclick="openModal(this)">
+                    </div>
+
                     <div class="project-tech">
                         <span class="tech-tag">Java</span>
                         <span class="tech-tag">Android Studio</span>
                         <span class="tech-tag">Firebase</span>
                         <span class="tech-tag">Google Maps API</span>
-                        <span class="tech-tag">Agile</span>
+                        <span class="tech-tag">Agile Development</span>
                     </div>
                     <div class="project-links">
-                        <a href="#">GitHub</a>
-                        <a href="#">Live Demo</a>
+                        <a href="https://github.com/jordanjlee214/Beacon">GitHub</a>
+                        <a href="https://docs.google.com/document/d/1UOeplERPqd8lVeChQ7wmcCG_otssJzYsGbxhM1zgkms/edit?usp=sharing">Project Report</a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>Studia</h3>
-                    <p class="project-date">August 2020 - June 2021</p>
-                    <p>An Android study group app featuring real-time chat, user authentication, and cloud storage. Designed with a focus on scalable architecture and consistent UI/UX for educational collaboration.</p>
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="images/projects/studia-icon.png" alt="Studia" onerror="this.style.display='none'; this.parentElement.innerHTML='📚';">
+                        </div>
+                        <div class="project-title-section">
+                            <h3>Studia: A Study Group App</h3>
+                            <p class="project-date">August 2020 - June 2021</p>
+                        </div>
+                    </div>
+                    <p><strong>Built for:</strong> TJHSST Senior Research Project</p>
+                    <p>An Android study group creation app organized by high school, featuring real-time chat, user authentication, and cloud storage. Designed with a focus on consistent user interface and distributed architecture. Created as a pair project for a high school senior research project on mobile app development.</p>
+                    
+                    <div class="project-screenshots">
+                        <img src="images/projects/studia-1.png" alt="Studia Screenshot 1" onclick="openModal(this)">
+                        <img src="images/projects/studia-2.png" alt="Studia Screenshot 2" onclick="openModal(this)">
+                        <img src="images/projects/studia-3.png" alt="Studia Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/studia-4.png" alt="Studia Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/studia-5.png" alt="Studia Screenshot 3" onclick="openModal(this)">
+                    </div>
+
                     <div class="project-tech">
                         <span class="tech-tag">Java</span>
                         <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Real-time Database</span>
-                        <span class="tech-tag">Cloud Storage</span>
+                        <span class="tech-tag">Android Studio</span>
+                        <span class="tech-tag">GitHub</span>
                         <span class="tech-tag">XML</span>
                     </div>
                     <div class="project-links">
-                        <a href="#">GitHub</a>
-                        <a href="#">Case Study</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>NGO Location Tracker</h3>
-                    <p class="project-date">June 2024 - May 2025</p>
-                    <p>A JavaScript web application integrating AirTable REST API with Google Maps API for real-time geolocation of church partners. Built for Juventud para Cristo Uruguay with secure deployment and comprehensive documentation.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">AirTable API</span>
-                        <span class="tech-tag">Google Maps API</span>
-                        <span class="tech-tag">Netlify</span>
-                        <span class="tech-tag">REST APIs</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#">GitHub</a>
-                        <a href="#">Live Site</a>
+                        <a href="https://github.com/jordanjlee214/StudyGroupApp">GitHub</a>
+                        <a href="https://www.youtube.com/watch?v=YnxabB0HXr8">Presentation</a>
+                        <a href="https://docs.google.com/document/d/1zB-S9GQI4A7QnTLqp6J48AWTJOllb9D7/edit?usp=sharing&ouid=105616933428305067197&rtpof=true&sd=true">Research Paper</a>
                     </div>
                 </div>
             </div>
@@ -466,31 +736,65 @@
             <h2>Experience</h2>
             <div class="experience-timeline">
                 <div class="experience-item">
-                    <h3>Communications and Tech Intern</h3>
-                    <p class="experience-company">Juventud para Cristo Uruguay</p>
-                    <p class="experience-date">June 2024 - May 2025 | Montevideo, Uruguay</p>
-                    <p>Designed and implemented integrated database systems with AirTable, built full-stack web applications, and created comprehensive technical documentation. Developed automated workflows that improved organizational efficiency and data management.</p>
+                    <div class="experience-icon">
+                        <img src="images/experience/jpc-icon.png" alt="JPC Uruguay" onerror="this.style.display='none'; this.parentElement.innerHTML='🌎';">
+                    </div>
+                    <div class="experience-content">
+                        <h3>Communications and Tech Intern</h3>
+                        <p class="experience-company">Juventud para Cristo Uruguay</p>
+                        <p class="experience-date">June 2024 - May 2025 | Montevideo, Uruguay</p>
+                        <p>Designed and implemented integrated database systems with AirTable, built full-stack web applications, and created comprehensive technical documentation. Developed automated workflows that improved organizational efficiency and data management. Assisted with photography and videography. Redesigned pages on their website to improve organization and clarity.</p>
+                    </div>
+                    <div class="project-screenshots">
+                        <img src="images/projects/jpc-pic.jpg" alt="Juventud para Cristo 1" onclick="openModal(this)">
+                        <img src="images/projects/jpc-pic-2.jpg" alt="Juventud para Cristo 1" onclick="openModal(this)">
+                    </div>
                 </div>
 
                 <div class="experience-item">
-                    <h3>Album Executive Producer</h3>
-                    <p class="experience-company">Wheaton College Storytelling Project</p>
-                    <p class="experience-date">August 2023 - May 2024 | Wheaton, IL</p>
-                    <p>Led cross-functional team of 11 in producing 13-track album. Designed and maintained project website with cohesive frontend architecture, featured on official college website. Managed complex workflows for creative content production.</p>
+                    <div class="experience-icon">
+                        <img src="images/experience/stp-icon.png" alt="Storytelling Project" onerror="this.style.display='none'; this.parentElement.innerHTML='🎵';">
+                    </div>
+                    <div class="experience-content">
+                        <h3>Album Executive Producer</h3>
+                        <p class="experience-company">Wheaton College Storytelling Project</p>
+                        <p class="experience-date">August 2023 - May 2024 | Wheaton, IL</p>
+                        <p>Helped lead a cross-functional team of 11 in producing a 13-track studio album. Created a project schedule to manage writing and recording sessions. Distributed the album to major platforms such as Spotify and Apple Music. Designed promotional content.</p>
+                    </div>
+                    <div class="project-screenshots">
+                        <img src="images/projects/stp-pic.jpg" alt="Storytelling Project 1" onclick="openModal(this)">
+                    </div>
+                    <div class="project-links">
+                        <a href="https://open.spotify.com/album/06kxo1xcCDgnHZ6Ir9qOL4?si=Ry8gzewIR4OeTgXt6ViFxA">Album Link</a>
+                    </div>
                 </div>
 
                 <div class="experience-item">
-                    <h3>Campus Representative</h3>
-                    <p class="experience-company">Wheaton College Admissions Office</p>
-                    <p class="experience-date">August 2022 - May 2023 | Wheaton, IL</p>
-                    <p>Facilitated structured presentations to prospective students and faculty, developing strong communication and public speaking skills while representing the institution's technical programs.</p>
+                    <div class="experience-icon">
+                        <img src="images/experience/wheaton-icon.png" alt="Wheaton College" onerror="this.style.display='none'; this.parentElement.innerHTML='🎓';">
+                    </div>
+                    <div class="experience-content">
+                        <h3>Campus Host</h3>
+                        <p class="experience-company">Wheaton College Admissions Office</p>
+                        <p class="experience-date">August 2022 - May 2023 | Wheaton, IL</p>
+                        <p>Represented Wheaton College and welcomed prospective students, families, and faculty by leading 75-minute walking tours of the campus and hosting students overnight to familiarize them with residence life. to prospective students and faculty. Developed strong communication and public speaking skills while enjoying a tight-knit team dynamic.</p>
+                    </div>
+                    <div class="project-screenshots">
+                        <img src="images/projects/deke-pic.jpg" alt="Wheaton College Deke 1" onclick="openModal(this)">
+                    </div>
                 </div>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2025 Jordan Lee. Ready to build something amazing together.</p>
+            <p>&copy; 2025 Jordan Lee</p>
         </footer>
+    </div>
+
+    <!-- Modal for viewing images -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
     <script>
@@ -524,6 +828,33 @@
             section.style.transform = 'translateY(30px)';
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
+        });
+
+        // Modal functionality for images
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
         });
     </script>
 </body>
