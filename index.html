@@ -264,13 +264,22 @@
         }
 
         .project-screenshots {
-            display: grid;
+            /* display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 10px;
             margin: 20px 0;
             max-height: 200px;
             overflow: hidden;
-            justify-items: center;
+            justify-items: center; */
+
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+            max-height: 200px;
+            overflow: hidden;
         }
 
         .project-screenshots img {
@@ -287,6 +296,19 @@
             transform: scale(1.05);
             border-color: #667eea;
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-screenshots img.vertical-screenshot {
+            width: 70px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #e0e6ff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-right: 4px;
+            margin-left: 0;
+            flex: 0 0 auto;
         }
 
         .project-tech {
@@ -348,6 +370,14 @@
             transform: translateX(10px);
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
         }
+
+        .experience-item .project-screenshots {
+            justify-items: center;
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }       
 
         .experience-icon {
             width: 60px;
@@ -519,10 +549,10 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <p>🎓</p>
-                <p>Wheaton College '25 | B.S. Computer Science</p>
+                <p>Wheaton College '25' | B.S. Computer Science</p>
                 <p>Thomas Jefferson High School for Science and Technology '21</p>
                 <br>
-                <p>Creative communicator and collaborative developer passionate about designing tools that matter. With experience in full-stack development, mobile applications, and distributed systems, I love creating technology that serves people.</p>
+                <p>Creative communicator and collaborative developer passionate about designing tools that matter. With experience in full-stack development, mobile applications, web design, and distributed systems, I love creating technology that serves people.</p>
             </div>
         </section>
 
@@ -643,11 +673,11 @@
                     <p>A mental health iOS app built with Swift that helps users track emotional wellness states. Implemented with MVC architecture. Features a simple, intuitive UI for recording coping strategies and making them quickly available.</p>
                     
                     <div class="project-screenshots">
-                        <img src="images/projects/halt-1.png" alt="HALT Helper Screenshot 1" onclick="openModal(this)">
-                        <img src="images/projects/halt-2.png" alt="HALT Helper Screenshot 2" onclick="openModal(this)">
-                        <img src="images/projects/halt-3.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)">
-                        <img src="images/projects/halt-4.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)">
-                        <img src="images/projects/halt-5.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/halt-1.png" alt="HALT Helper Screenshot 1" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/halt-2.png" alt="HALT Helper Screenshot 2" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/halt-3.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/halt-4.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/halt-5.png" alt="HALT Helper Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
                     </div>
 
                     <div class="project-tech">
@@ -675,11 +705,11 @@
                     <p>A location-based social connection app for campus communities. Enables students to share each others locations and receive notifications for both planned and spontaneous meetups. Built collaboratively using Agile methodology with Firebase backend and Google Maps API integration for real-time geolocation features.</p>
                     
                     <div class="project-screenshots">
-                        <img src="images/projects/beacon-1.png" alt="Beacon Screenshot 1" onclick="openModal(this)">
-                        <img src="images/projects/beacon-2.png" alt="Beacon Screenshot 2" onclick="openModal(this)">
-                        <img src="images/projects/beacon-3.png" alt="Beacon Screenshot 3" onclick="openModal(this)">
-                        <img src="images/projects/beacon-4.png" alt="Beacon Screenshot 3" onclick="openModal(this)">
-                        <img src="images/projects/beacon-5.png" alt="Beacon Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/beacon-1.png" alt="Beacon Screenshot 1" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/beacon-2.png" alt="Beacon Screenshot 2" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/beacon-3.png" alt="Beacon Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/beacon-4.png" alt="Beacon Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/beacon-5.png" alt="Beacon Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
                     </div>
 
                     <div class="project-tech">
@@ -709,11 +739,11 @@
                     <p>An Android study group creation app organized by high school, featuring real-time chat, user authentication, and cloud storage. Designed with a focus on consistent user interface and distributed architecture. Created as a pair project for a high school senior research project on mobile app development.</p>
                     
                     <div class="project-screenshots">
-                        <img src="images/projects/studia-1.png" alt="Studia Screenshot 1" onclick="openModal(this)">
-                        <img src="images/projects/studia-2.png" alt="Studia Screenshot 2" onclick="openModal(this)">
-                        <img src="images/projects/studia-3.png" alt="Studia Screenshot 3" onclick="openModal(this)">
-                        <img src="images/projects/studia-4.png" alt="Studia Screenshot 3" onclick="openModal(this)">
-                        <img src="images/projects/studia-5.png" alt="Studia Screenshot 3" onclick="openModal(this)">
+                        <img src="images/projects/studia-1.png" alt="Studia Screenshot 1" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/studia-2.png" alt="Studia Screenshot 2" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/studia-3.png" alt="Studia Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/studia-4.png" alt="Studia Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
+                        <img src="images/projects/studia-5.png" alt="Studia Screenshot 3" onclick="openModal(this)" class="vertical-screenshot">
                     </div>
 
                     <div class="project-tech">
@@ -763,9 +793,6 @@
                     </div>
                     <div class="project-screenshots">
                         <img src="images/projects/stp-pic.jpg" alt="Storytelling Project 1" onclick="openModal(this)">
-                    </div>
-                    <div class="project-links">
-                        <a href="https://open.spotify.com/album/06kxo1xcCDgnHZ6Ir9qOL4?si=Ry8gzewIR4OeTgXt6ViFxA">Album Link</a>
                     </div>
                 </div>
 
